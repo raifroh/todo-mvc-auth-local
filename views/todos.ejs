@@ -19,6 +19,8 @@
     </ul>
 
     <h2><%= user.userName %> has <%= left %> things left to do.</h2>
+    <h2><%= user.userName %> has done <%= done %> things.</h2>
+
 
     <form action="/todos/createTodo" method='POST'>
         <input type="text" placeholder="Enter Todo Item" name='todoItem'>
