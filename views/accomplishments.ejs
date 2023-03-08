@@ -8,27 +8,21 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Todos</h1>
+    <h1>Look at what you've accomplished so far!</h1>
     <ul>
-    <% todos.forEach( el => { %>
-            <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <span class='del'> Delete </span>
+        <% todos.filter(todo => todo.completed).forEach(todo => { %>
+            <li class='todoItem' data-id='<%=todo._id%>'>
+                <span class='accomplished'><%= todo.todo %></span>
             </li>
     <% }) %>    
     </ul>
 
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
     <h2><%= user.userName %> has done <%= done %> things.</h2>
 <!-- add link to accomplishments here where we list the completed tasks -->
 
-    <form action="/todos/createTodo" method='POST'>
-        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-        <input type="submit">
-    </form>
 
     <a href="/logout">Logout</a>
-    <a href="/accomplishments">Accomplishments Page</a>
+    <a href="/todos">Todos Page</a>
 
     <script src="js/main.js"></script>
 </body>
