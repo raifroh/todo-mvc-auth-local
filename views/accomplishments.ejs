@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Look at what you've accomplished so far!</h1>
+    <ul>
+        <% todos.filter(todo => todo.completed).forEach(todo => { %>
+            <li class='todoItem' data-id='<%=todo._id%>'>
+                <span class='accomplished'><%= todo.todo %></span>
+            </li>
+    <% }) %>    
+    </ul>
+
+    <h2><%= user.userName %> has done <%= done %> things.</h2>
+<!-- add link to accomplishments here where we list the completed tasks -->
+
+
+    <a href="/logout">Logout</a>
+    <a href="/todos">Todos Page</a>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
