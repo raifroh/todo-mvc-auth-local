@@ -14,6 +14,11 @@ module.exports = {
             //get rid of duplicate values and put it into an array
             const uniqueCategories = await [...new Set(categoryArray)]
             console.log(uniqueCategories)
+
+            //find all the due dates created by the user
+            const dueDates = await Todo.find( {userId:req.user.id }, "dueDate")
+            console.log(dueDates)
+
             res.render('todos.ejs', {todos: todoItems, left: itemsLeft, done: itemsCompleted, user: req.user, categoryOptions: uniqueCategories})
         }catch(err){
             console.log(err)
@@ -21,7 +26,7 @@ module.exports = {
     },
     createTodo: async (req, res)=>{
         try{
-            await Todo.create({todo: req.body.todoItem, completed: false, userId: req.user.id, category: req.body.category})
+            await Todo.create({todo: req.body.todoItem, completed: false, userId: req.user.id, category: req.body.category, dueDate: req.body.dueDate})
             console.log('Todo has been added!')
             res.redirect('/todos')
         }catch(err){

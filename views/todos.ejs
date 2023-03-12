@@ -14,6 +14,7 @@
             <li class='todoItem' data-id='<%=el._id%>'>
                 <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
                 <span class="'<%= el.category%>"><%= el.category%></span>
+                <span class="<%= el.dueDate%>"><%= el.dueDate%></span>
                 <span class='del'> Delete </span>
             </li>
     <% }) %>    
@@ -25,6 +26,7 @@
     <form action="/todos/createTodo" method='POST'>
         <input type="text" placeholder="Enter Todo Item" name='todoItem'>
         <input type="text" placeholder="Enter Item Category" name="category" list="category-options">
+        <label>Due Date: <input type="date" name="dueDate"></label>
         <!-- use datalist and uniqueCategories array to auto populate drop down options of previously created category labels -->
         <datalist id="category-options">
             <% categoryOptions.forEach(el => {%>
