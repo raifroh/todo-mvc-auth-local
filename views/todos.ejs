@@ -15,6 +15,16 @@
                 <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
                 <span class="'<%= el.category%>"><%= el.category%></span>
                 <span class='del'> Delete </span>
+                
+                <!-- Rendering the due date// Need to figure out how to change format to MM/DD/YY -->
+                <!-- If a due date exists && the length > 1 then add this span
+                     as you can see in the DB, if no date is entered the string length is 0. -->
+                <% if (el.dueDate && el.dueDate.length > 1) { %>
+                    <span class="date <%= el.dueDate %>">Due Date: <%= el.dueDate %></span>
+                  <% } else { %>
+                    <span class="hidden"></span>
+                  <% } %>
+                
             </li>
     <% }) %>    
     </ul>
@@ -25,6 +35,8 @@
     <form action="/todos/createTodo" method='POST'>
         <input type="text" placeholder="Enter Todo Item" name='todoItem'>
         <input type="text" placeholder="Enter Item Category" name="category" list="category-options">
+        <!-- Drop down menu to choose a due date -->
+        <label>Due Date: <input type="date" name="dueDate"></label>
         <!-- use datalist and uniqueCategories array to auto populate drop down options of previously created category labels -->
         <datalist id="category-options">
             <% categoryOptions.forEach(el => {%>

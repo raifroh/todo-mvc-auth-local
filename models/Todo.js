@@ -16,6 +16,10 @@ const TodoSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true
+  },
+  dueDate: {
+    type: String,
+    required: false
   }
 })
 
