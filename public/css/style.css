@@ -11,6 +11,13 @@ h1{
 .hidden { 
     display:none;
 }
-.date {
-    margin-left: 2.5rem;
+
+/* CSS GRID for ToDo Items */
+.grid-container {
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 10px;
+    max-width: 60%;
 }
+
+

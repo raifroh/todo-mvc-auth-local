@@ -11,19 +11,20 @@
     <h1>Todos</h1>
     <ul>
     <% todos.forEach( el => { %>
-            <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <span class="'<%= el.category%>"><%= el.category%></span>
-                <span class='del'> Delete </span>
+            <li class='grid-container todoItem' data-id='<%=el._id%>'>
+                <span class='todoItem grid-item <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                <span class="category grid-item '<%= el.category%>"><%= el.category%></span>
+                <span class='delete grid-item'> Delete </span>
                 
                 <!-- Rendering the due date// Need to figure out how to change format to MM/DD/YY -->
                 <!-- If a due date exists && the length > 1 then add this span
                      as you can see in the DB, if no date is entered the string length is 0. -->
-                <% if (el.dueDate && el.dueDate.length > 1) { %>
-                    <span class="date <%= el.dueDate %>">Due Date: <%= el.dueDate %></span>
-                  <% } else { %>
-                    <span class="hidden"></span>
-                  <% } %>
+               <!-- Rendering the due date and formatting it with Moment.js -->
+<% if (el.dueDate && el.dueDate.length > 1) { %>
+    <span class="dueDate grid-item <%= el.dueDate %>">Due Date: <%= el.dueDate%></span>
+<% } else { %>
+    <span class="hidden"></span>
+<% } %>
                 
             </li>
     <% }) %>    
