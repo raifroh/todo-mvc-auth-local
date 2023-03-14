@@ -5,32 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/todos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <h1>Todos</h1>
     <ul>
     <% todos.forEach( el => { %>
-            <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <span class="'<%= el.category%>"><%= el.category%></span>
-                <span class='del'> Delete </span>
-                
+            <li class='grid-container todoItem' data-id='<%=el._id%>'>
+                <span class='todoItem grid-item <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                <span class="category grid-item '<%= el.category%>"><%= el.category%></span>
+                <span class='delete grid-item'> Delete </span>
                 <!-- Rendering the due date// Need to figure out how to change format to MM/DD/YY -->
                 <!-- If a due date exists && the length > 1 then add this span
                      as you can see in the DB, if no date is entered the string length is 0. -->
-                <% if (el.dueDate && el.dueDate.length > 1) { %>
-                    <span class="date <%= el.dueDate %>">Due Date: <%= el.dueDate %></span>
-                  <% } else { %>
-                    <span class="hidden"></span>
-                  <% } %>
-                
-            </li>
-    <% }) %>    
+               <!-- Rendering the due date and formatting it with Moment.js -->
+        <% if (el.dueDate && el.dueDate.length > 1) { %>
+            <span class="dueDate grid-item <%= el.dueDate %>">Due Date: <%= el.dueDate%></span>
+        <% } else { %>
+            <span class="hidden"></span>
+        <% } %>                       
+                    </li>
+            <% }) %>    
     </ul>
 
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
-    <h2><%= user.userName %> has done <%= done %> things.</h2>
+    <h2 class="leftToDo"><%= user.userName %> has <%= left %> things left to do.</h2>
+    <h2 class="hasDone"><%= user.userName %> has done <%= done %> things.</h2>
 
     <form action="/todos/createTodo" method='POST'>
         <input type="text" placeholder="Enter Todo Item" name='todoItem'>

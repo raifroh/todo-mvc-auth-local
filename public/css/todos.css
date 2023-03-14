@@ -1,0 +1,51 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+}
+h1{
+    color: red;
+    margin-left: 3%;
+}
+.completed{
+    text-decoration: line-through;
+    color: gray;
+}
+.not{
+    text-decoration: underline;
+}
+/* Hidden class in oder to not have a span while there are no due dates present */
+.hidden { 
+    display:none;
+}
+.leftToDo, .hasDone {
+    font-weight: 800;
+    margin-left: 3%;
+}
+.leftToDo {
+    margin-bottom: 3px;
+}
+.hasDone {
+    margin-top: 3px;
+}
+form, a {
+    margin-top: 2%;
+    margin-left: 3%;
+} 
+label{
+    margin-top: 2%;
+}
+input {
+    display: inline-block;
+    margin-bottom: 1%;
+}
+ 
+
+/* CSS GRID for ToDo Items */
+.grid-container {
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 10px;
+    max-width: 60%;
+}
+
+
