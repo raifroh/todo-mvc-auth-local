@@ -12,12 +12,10 @@ module.exports = {
             //put the values of the category property into an array
             const categoryArray = await allCategories.map(doc => doc['category'])
             //get rid of duplicate values and put it into an array
-            const uniqueCategories = await [...new Set(categoryArray)]
-            console.log(uniqueCategories)
+            const uniqueCategories = [...new Set(categoryArray)]
 
             //find all the due dates created by the user
             const dueDates = await Todo.find( {userId:req.user.id }, "dueDate")
-            console.log(dueDates)
 
             res.render('todos.ejs', {todos: todoItems, left: itemsLeft, done: itemsCompleted, user: req.user, categoryOptions: uniqueCategories})
         }catch(err){

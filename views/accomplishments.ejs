@@ -12,8 +12,19 @@
 </head>
 <body>
     <h1>Look at what you've accomplished so far!</h1>
+    <span>Filter accomplishments by category:</span>
+    <form action="" method="GET">
+        <label for="category-dropdown"></label>
+        <select name="category-dropdown" id="category-dropdown">
+            <option value="">All</option>
+            <% categoryOptions.forEach(el => {%>
+                <option value="<%=el%>"><%=el%></option>
+            <% }) %>
+        </select>
+        <button type="submit">Filter Accomplishments</button>
+    </form>
     <ul>
-        <% todos.filter(todo => todo.completed).forEach(todo => { %>
+        <% todos.forEach(todo => { %>
             <li class='todoItem' data-id='<%=todo._id%>'>
                 <span class='accomplished'><%= todo.todo %></span>
             </li>
