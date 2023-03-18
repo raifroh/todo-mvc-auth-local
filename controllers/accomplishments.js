@@ -2,7 +2,7 @@ const Todo = require('../models/Todo')
 
 module.exports = {
     getDone: async (req,res)=>{
-        //console.log(req.query)
+        // console.log(req.query)
         try{
             const completedTodos = await Todo.find({userId:req.user.id, completed: true})
             const itemsCompleted = await Todo.countDocuments({userId:req.user.id,completed: true})

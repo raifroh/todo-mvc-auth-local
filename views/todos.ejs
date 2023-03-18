@@ -19,16 +19,18 @@
                 <span class='todoItem grid-item <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
                 <span class="category grid-item '<%= el.category%>"><%= el.category%></span>
                 <span class='delete grid-item'> Delete </span>
-                <!-- Rendering the due date// Need to figure out how to change format to MM/DD/YY -->
-                <!-- If a due date exists && the length > 1 then add this span
-                     as you can see in the DB, if no date is entered the string length is 0. -->
-               <!-- Rendering the due date and formatting it with Moment.js -->
         <% if (el.dueDate && el.dueDate.length > 1) { %>
-            <span class="dueDate grid-item <%= el.dueDate %>">Due Date: <%= el.dueDate%></span>
+            <% let dueDate = new Date(el.dueDate) %>
+            <% let today = new Date()%>
+            <% const differenceInTime = dueDate - today %>
+            <!-- 1000 m/s in a sec- 36000 sec in an hour - 24 hours in a day -->
+            <% const differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24)) %>
+
+            <span class="dueDate grid-item <%= el.dueDate %>">Due in <%= differenceInDays %> days</span>
         <% } else { %>
             <span class="hidden"></span>
-        <% } %>                       
-                    </li>
+        <% } %>                     
+            </li>
             <% }) %>    
     </ul>
 
