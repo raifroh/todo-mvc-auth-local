@@ -46,8 +46,8 @@ input {
 .grid-container {
     display:grid;
     grid-template-columns: repeat(4,1fr);
-    grid-gap: 10px;
-    max-width: 60%;
+    grid-gap: 5px;
+    max-width: 70%;
 }
 
 
