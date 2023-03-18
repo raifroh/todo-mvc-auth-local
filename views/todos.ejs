@@ -12,6 +12,7 @@
 </head>
 <body>
     <h1>Todos</h1>
+    <h1><%= new Date().toDateString() %></h1>
     <ul>
     <% todos.forEach( el => { %>
             <li class='grid-container todoItem' data-id='<%=el._id%>'>
